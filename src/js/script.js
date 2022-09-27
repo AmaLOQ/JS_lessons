@@ -50,7 +50,10 @@
 
 // alert();
 
-let 	money = prompt(`Ваш бютжет на месяц?`, ``);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let 	money = +prompt(`Ваш бютжет на месяц?`, ``);
 		time = prompt(`Введите дату в формате YYYY-MM-DD`, ``);
 
 let 	appData = {
@@ -62,14 +65,77 @@ let 	appData = {
 			savings: false
 };
 
-let  	a1 = prompt(`Введите обязательную статью расходов в этом месяце`, ``);
-		a2 = prompt(`Во сколько обойдется`, ``);
-		a3 = prompt(`Введите обязательную статью расходов в этом месяце`, ``);
-		a4 = prompt(`Во сколько обойдется?`, ``);
+for (let i = 0; i < 2; i++) {
+	let  	a = prompt(`Введите обязательную статью расходов в этом месяце`, ``);
+			b = prompt(`Во сколько обойдется`, ``);
+	if ((typeof(a))=== `string` && (typeof(a)) != null && (typeof(b)) != null
+		&& a != `` && b != `` && a.length < 50) {
+			console.log(`done`);
 
-appData.expenses.a1 = a2;
-appData.expenses.a3 = a4;
+			appData.expenses[a] = b;
+	}; 
+};
 
-alert(appData.budget / 30);
+appData.moneyPerDay =  appData.budget / 30;
+alert(`Ежедневный бюджет : ` + appData.moneyPerDay);
 
-console.log();
+if (appData.moneyPerDay < 40000) {
+		console.log(`Низкий уровень достатка!`);
+} else if (appData.moneyPerDay > 40000 && appData.moneyPerDay < 100000) {
+		console.log(`Средний уровень достатка!`);
+} else if (appData.moneyPerDay > 100000) {
+		console.log(`Высокий уровень достатка!`);
+} else {
+		console.log(`Произошла ошибка!`);
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+// if(num < 49) {
+// 	console.log(`Неверно!`)
+// } else if (num > 100) {
+// 	console.log(`Много!`)
+// } else{
+// 	console.log(`Верно!`)
+// }
+
+// (num == 50) ? console.log(`Верно!`) : console.log(`Не верно!`)  /* Тернарный оператор*/
+
+// switch (num) {
+// 		case num < 49: 
+// 				console.log(`Неверно!`);
+// 				break;
+// 		case num > 100:
+// 				console.log(`Много!`);
+// 				break;
+// 		case num > 80:
+// 				console.log(`Все еще много!`);
+// 				break;
+// 		case 50:
+// 				console.log(`Есть!`);
+// 				break;
+// 		default:
+// 				console.log(`Что-то пошло не так!`);
+// }
+
+
+// let num = 50; 												/* Цикл */
+// while (num < 55) {
+// 	console.log(num);
+// 	num++;
+// }
+
+// do {
+// 	console.log(num);
+// 	num++;
+// }
+// while (num < 55)
+
+// for (let i = 1; i < 9; i++) {
+// 	if (i == 6) {
+// 		continue
+// 	}
+// 		console.log(i)
+// }
